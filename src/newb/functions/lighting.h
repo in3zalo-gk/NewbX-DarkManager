@@ -18,6 +18,27 @@ vec3 sunLightTint(float dayFactor, float rain) {
   return tint;
 }
 
+#ifdef NL_LEAF_LIGHT
+float nlValueNoise(vec2 p) {
+  vec2 i = floor(p);
+  vec2 f = fract(p);
+  f = f*f*(3.0-2.0*f);
+  float a = fastRand(i);
+  float b = fastRand(i + vec2(1.0, 0.0));
+  float c = fastRand(i + vec2(0.0, 1.0));
+  float d = fastRand(i + vec2(1.0, 1.0));
+  return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+}
+
+// patches of sunlight that filter through the canopy.
+// they slide as the sun moves and shimmer with the wind
+float nlLeafDapple(vec3 gPos, vec3 sunDir, highp float t) {
+  vec2 p = mod(gPos.xz, 512.0)*0.6 + 6.0*sunDir.xz + t*vec2(0.08, 0.05);
+  float n = mix(nlValueNoise(p), nlValueNoise(p*2.3 + 7.7 + t*0.12), 0.35);
+  return smoothstep(0.42, 0.68, n);
+}
+#endif
+
 vec3 nlLighting(
   sampler2D tex, nl_skycolor skycol, nl_environment env, vec3 wPos, out vec3 torchColor, vec3 COLOR,
   vec2 uv1, vec2 lit, bool isTree, float shade, highp float t, float renderdistance, float TIME_OF_DAY, vec3 CAMERA_POS
@@ -67,7 +88,7 @@ vec3 nlLighting(
 
     float sunLightAttenuation = clamp(0.5*(((2.0*step(TIME_OF_DAY, 0.5)-1.0)*(wPos.x*cos(NL_SUN_PATH_YAW)+wPos.y*sin(NL_SUN_PATH_YAW))/renderdistance) + 1.0), 0.0, 1.0);
     sunLightAttenuation = mix(1.0, sunLightAttenuation*sunLightAttenuation, dawnFactor);
-    sunLightAttenuation *= 1.0-0.4*env.rainFactor;
+    sunLightAttenuation *= 1.0-0.55*env.rainFactor;
 
     // shadow cast by sun light
     float shadow = step(0.93, uv1.y);
@@ -93,8 +114,22 @@ vec3 nlLighting(
       shadow *= 0.3 + 0.7*smoothstep(0.6, 0.0, cmask);
     #endif
 
+    // sun through leaves: under a canopy the skylight is a bit lower (uv1.y < 0.93)
+    float leafSun = 0.0;
+    #ifdef NL_LEAF_LIGHT
+      float leafBand = smoothstep(0.5, 0.7, uv1.y)*(1.0-step(0.93, uv1.y));
+      float leafSunUp = max(env.dayFactor, 0.0)*(1.0-env.rainFactor)*step(0.8, shade);
+      if (leafBand*leafSunUp > 0.0) {
+        leafSun = leafBand*leafSunUp*nlLeafDapple(wPos + CAMERA_POS, env.sunDir, t);
+        shadow = mix(shadow, 1.0, NL_LEAF_LIGHT*leafSun);
+      }
+    #endif
+
     // direct light from top
     light = (NL_SUNLIGHT_INTENSITY*shadow*sunLightAttenuation)*sunLightTint(env.dayFactor, env.rainFactor);
+    #ifdef NL_LEAF_LIGHT
+      light += vec3(0.30, 0.20, 0.09)*(NL_LEAF_LIGHT*leafSun); // warm glow of the beam
+    #endif
 
     // sky ambient
     lum = luminance(light);

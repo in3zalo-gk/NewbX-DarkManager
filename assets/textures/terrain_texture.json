@@ -354,6 +354,10 @@
         "soul_lantern_carried": {
             "textures": "textures/items/soul_lantern"
         },
+        // torch_on
+        "torch_on": {
+            "textures": "textures/blocks/torch_on"
+        },
         // soul_torch
         "soul_torch": {
             "textures": "textures/blocks/soul_torch"

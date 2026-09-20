@@ -45,6 +45,13 @@ for sp in cfg.get("subpack", []):
     if sp["materials"]:
         check_mats(os.path.join(pack, "subpacks", sp["define"].lower()), sp["materials"], sp["define"].lower())
 
+
+# assets that must be inside the pack
+for rel in ("pack_icon.png", "biomes_client.json", os.path.join("textures", "blocks", "torch_on.png"),
+            os.path.join("fogs", "dm_swamp_fog_setting.json")):
+    if not os.path.isfile(os.path.join(pack, rel)):
+        err(f"asset missing in pack: {rel}")
+
 mf_path = os.path.join(pack, "manifest.json")
 if not os.path.isfile(mf_path):
     err("manifest.json missing")

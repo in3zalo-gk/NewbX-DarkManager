@@ -39,7 +39,7 @@
     CONTRAST -> NL_CONTRAST              BLOOM_STRENGTH -> NL_BLOOM_STRENGTH
 */
 #define NL_FOG_DENSITY    1.0  // 0.3 thin ~ 2.0 very dense (overworld fog strength)
-#define NL_FOG_DISTANCE   0.72 // 0.3 fog starts very close ~ 1.0 vanilla distance (overworld)
+#define NL_FOG_DISTANCE   0.85 // 0.3 fog starts very close ~ 1.0 vanilla distance (overworld). Biomes add their own distance on top
 #define NL_NIGHT_DARKNESS 0.55 // 0.0 vanilla-like night ~ 0.9 very dark night (keep < 0.9 to stay playable)
 #define NL_MOON_INTENSITY 1.0  // 0.3 dim ~ 2.0 bright (cold moonlight strength)
 #define NL_AMBIENT_LIGHT  0.85 // 0.4 dark shadows ~ 1.5 bright shadows (overworld sky ambient)
@@ -49,6 +49,8 @@
 #define NL_END_FOG_START  0.28 // 0.05 fog starts very close ~ 0.9 far (End only, fraction of render distance)
 #define NL_UNDERWATER_FOG 1.1  // 0.5 clear water ~ 2.0 murky water
 #define NL_CONTRAST       1.12 // 1.0 vanilla ~ 1.4 harsh contrast
+#define NL_BIOME_TINT     0.6  // [toggle] 0.0 off ~ 1.0 strong. Tints sky/fog by the biome fog color (fogs/ + biomes_client.json)
+#define NL_LEAF_LIGHT     0.9  // [toggle] 0.3 subtle ~ 1.0 strong. Dappled sunlight through tree leaves (moves with sun + wind)
 #define NL_BLOOM_STRENGTH 0.10 // [toggle] 0.05 subtle ~ 0.4. NOT real bloom: cheap highlight bleed (no post-process pass exists in materials)
 
 /* Color correction */
@@ -186,7 +188,9 @@
 #define NL_CLOUD3_SHADOW_OFFSET 0.3      // 0.05 minimal ~ 1.0 large
 
 /* Aurora settings */
-#define NL_AURORA 1.2           // [toggle] 0.4 dim ~ 4.0 very bright
+#define NL_AURORA 1.6           // [toggle] 0.4 dim ~ 4.0 very bright
+#define NL_AURORA_EVERY_DAYS 3.0 // [toggle] aurora shows one night every N days (needs the game Day uniform). Remove line = every night
+#define NL_AURORA_DAY_OFFSET 2.0 // 0..N-1 shifts which day the aurora shows
 #define NL_AURORA_VELOCITY 0.03 // 0.0 static ~ 0.3 very fast
 #define NL_AURORA_SCALE 0.04    // 0.002 large ~ 0.4 tiny
 #define NL_AURORA_WIDTH 0.18    // 0.04 thin line ~ 0.4 thick lines
@@ -225,7 +229,9 @@
 /* Sky reflection */
 //#define NL_GROUND_REFL 0.4       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky
 #define NL_GROUND_RAIN_WETNESS 1.0 // 0.0 no wetness ~ 1.0 fully wet blocks when raining
-#define NL_GROUND_RAIN_PUDDLES 0.7 // 0.0 no puddles ~ 1.0 puddles
+#define NL_WET_DARKEN 0.5          // 0.0 none ~ 0.8 very dark wet blocks while raining
+#define NL_RAIN_SHIMMER 0.3        // [toggle] 0.1 subtle ~ 0.6 puddle reflections flicker as rain hits them
+#define NL_GROUND_RAIN_PUDDLES 0.85 // 0.0 no puddles ~ 1.0 puddles
 
 /* Entity (Actor, ItemInHand) */
 #define NL_ENTITY_BRIGHTNESS     0.65 // 0.1 dark ~ 1.6 bright
@@ -233,7 +239,7 @@
 
 /* Weather particles */
 #define NL_WEATHER_SPECK 0.6         // [toggle] 0.0 vanilla texture ~ 1.0 soft speck
-#define NL_WEATHER_RAIN_SLANT 4.0    // 1.0 minimal ~ 8.0 violent
+#define NL_WEATHER_RAIN_SLANT 5.0    // 1.0 minimal ~ 8.0 violent
 #define NL_WEATHER_PARTICLE_SIZE 1.0 // 0.5 tiny ~ 4.0 large
 
 /* Lava effects */
@@ -289,6 +295,8 @@
   #undef NL_RAINBOW
   #undef NL_CLOUDY_FOG
   #undef NL_RAIN_MIST_OPACITY
+  #undef NL_LEAF_LIGHT
+  #undef NL_RAIN_SHIMMER
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 1
   // animations / secondary

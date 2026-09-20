@@ -76,6 +76,31 @@ for dp, _, fns in os.walk("src"):
                 if m not in defined and not re.search(r"#\s*define\s+" + m + r"\b", txt):
                     warnings.append(f"{dp}/{fn}: {m} is not defined in config.h (ok only if intentionally optional)")
 
+
+# --- assets: fog files, biome links, textures
+import json, glob
+fog_ids = set()
+for f in glob.glob("assets/fogs/*.json"):
+    try:
+        d = json.load(open(f, encoding="utf-8"))
+        fog_ids.add(d["minecraft:fog_settings"]["description"]["identifier"])
+    except Exception as e:
+        errors.append(f"{f}: invalid fog json ({e})")
+try:
+    bj = json.load(open("assets/biomes_client.json", encoding="utf-8"))["biomes"]
+    for b, v in bj.items():
+        fid = v.get("fog_identifier")
+        if fid and fid not in fog_ids:
+            errors.append(f"biomes_client.json: biome {b} uses unknown fog {fid}")
+    print(f"  assets ok: {len(fog_ids)} fog settings, {sum(1 for v in bj.values() if 'fog_identifier' in v)} biomes with fog")
+except Exception as e:
+    errors.append(f"biomes_client.json invalid ({e})")
+for t in ("torch_on", "soul_torch", "redstone_torch_on", "redstone_lamp_on"):
+    if not os.path.isfile(f"assets/textures/blocks/{t}.png"):
+        errors.append(f"missing texture {t}.png")
+if not os.path.isfile("assets/pack_icon.png"):
+    errors.append("missing assets/pack_icon.png")
+
 for w in warnings:
     print("WARN ", w)
 for e in errors:

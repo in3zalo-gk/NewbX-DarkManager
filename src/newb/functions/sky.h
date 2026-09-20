@@ -59,6 +59,19 @@ nl_skycolor nlOverworldSkyColors(nl_environment env) {
   s.horizon = mix(s.horizon, NL_RAIN_HORIZON_COL*hh, rainMix);
   s.horizonEdge = mix(s.horizonEdge, s.horizon, env.rainFactor);
 
+  #ifdef NL_BIOME_TINT
+    // Each biome has its own fog color (assets/fogs + biomes_client.json). Its hue tints the horizon,
+    // so fog/sky/ambient follow the biome. Fades out when dark (night) and in the nether.
+    if (!env.nether) {
+      float fogBright = max(max(env.fogCol.r, env.fogCol.g), env.fogCol.b);
+      vec3 biomeTint = clamp(env.fogCol/(dot(env.fogCol, vec3_splat(0.33)) + 0.02), vec3_splat(0.6), vec3_splat(1.5));
+      float tintAmt = NL_BIOME_TINT*smoothstep(0.08, 0.25, fogBright)*(1.0-0.5*env.rainFactor);
+      s.horizon *= mix(vec3_splat(1.0), biomeTint, tintAmt);
+      s.horizonEdge *= mix(vec3_splat(1.0), biomeTint, tintAmt);
+      s.zenith *= mix(vec3_splat(1.0), biomeTint, 0.35*tintAmt);
+    }
+  #endif
+
   if (env.underwater) {
     vec3 underwaterFog = env.fogCol*env.fogCol*NL_UNDERWATER_TINT;
     s.zenith = mix(2.0*underwaterFog, underwaterFog*zh, 0.8);

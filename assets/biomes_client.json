@@ -4,13 +4,252 @@
       "water_surface_transparency": 0.65
     },
     "swampland": {
-      "water_surface_transparency": 0.94
+      "water_surface_transparency": 0.94,
+      "fog_identifier": "newb:dm_swamp"
     },
     "swampland_mutated": {
-      "water_surface_transparency": 0.94
+      "water_surface_transparency": 0.94,
+      "fog_identifier": "newb:dm_swamp"
     },
     "the_end": {
       "fog_identifier": "newb:fog_the_end"
+    },
+    "plains": {
+      "fog_identifier": "newb:dm_plains"
+    },
+    "sunflower_plains": {
+      "fog_identifier": "newb:dm_plains"
+    },
+    "meadow": {
+      "fog_identifier": "newb:dm_meadow"
+    },
+    "cherry_grove": {
+      "fog_identifier": "newb:dm_meadow"
+    },
+    "forest": {
+      "fog_identifier": "newb:dm_forest"
+    },
+    "forest_hills": {
+      "fog_identifier": "newb:dm_forest"
+    },
+    "flower_forest": {
+      "fog_identifier": "newb:dm_forest"
+    },
+    "birch_forest": {
+      "fog_identifier": "newb:dm_forest"
+    },
+    "birch_forest_hills": {
+      "fog_identifier": "newb:dm_forest"
+    },
+    "birch_forest_mutated": {
+      "fog_identifier": "newb:dm_forest"
+    },
+    "birch_forest_hills_mutated": {
+      "fog_identifier": "newb:dm_forest"
+    },
+    "roofed_forest": {
+      "fog_identifier": "newb:dm_dark_forest"
+    },
+    "roofed_forest_mutated": {
+      "fog_identifier": "newb:dm_dark_forest"
+    },
+    "mangrove_swamp": {
+      "fog_identifier": "newb:dm_mangrove"
+    },
+    "jungle": {
+      "fog_identifier": "newb:dm_jungle"
+    },
+    "jungle_hills": {
+      "fog_identifier": "newb:dm_jungle"
+    },
+    "jungle_mutated": {
+      "fog_identifier": "newb:dm_jungle"
+    },
+    "jungle_edge": {
+      "fog_identifier": "newb:dm_jungle"
+    },
+    "jungle_edge_mutated": {
+      "fog_identifier": "newb:dm_jungle"
+    },
+    "bamboo_jungle": {
+      "fog_identifier": "newb:dm_jungle"
+    },
+    "bamboo_jungle_hills": {
+      "fog_identifier": "newb:dm_jungle"
+    },
+    "taiga": {
+      "fog_identifier": "newb:dm_taiga"
+    },
+    "taiga_hills": {
+      "fog_identifier": "newb:dm_taiga"
+    },
+    "taiga_mutated": {
+      "fog_identifier": "newb:dm_taiga"
+    },
+    "mega_taiga": {
+      "fog_identifier": "newb:dm_taiga"
+    },
+    "mega_taiga_hills": {
+      "fog_identifier": "newb:dm_taiga"
+    },
+    "redwood_taiga_mutated": {
+      "fog_identifier": "newb:dm_taiga"
+    },
+    "redwood_taiga_hills_mutated": {
+      "fog_identifier": "newb:dm_taiga"
+    },
+    "cold_taiga": {
+      "fog_identifier": "newb:dm_cold_taiga"
+    },
+    "cold_taiga_hills": {
+      "fog_identifier": "newb:dm_cold_taiga"
+    },
+    "cold_taiga_mutated": {
+      "fog_identifier": "newb:dm_cold_taiga"
+    },
+    "ice_plains": {
+      "fog_identifier": "newb:dm_snow"
+    },
+    "ice_plains_spikes": {
+      "fog_identifier": "newb:dm_snow"
+    },
+    "ice_mountains": {
+      "fog_identifier": "newb:dm_snow"
+    },
+    "frozen_river": {
+      "fog_identifier": "newb:dm_snow"
+    },
+    "cold_beach": {
+      "fog_identifier": "newb:dm_snow"
+    },
+    "snowy_slopes": {
+      "fog_identifier": "newb:dm_snow_peaks"
+    },
+    "grove": {
+      "fog_identifier": "newb:dm_snow_peaks"
+    },
+    "frozen_peaks": {
+      "fog_identifier": "newb:dm_snow_peaks"
+    },
+    "jagged_peaks": {
+      "fog_identifier": "newb:dm_snow_peaks"
+    },
+    "desert": {
+      "fog_identifier": "newb:dm_desert"
+    },
+    "desert_hills": {
+      "fog_identifier": "newb:dm_desert"
+    },
+    "desert_mutated": {
+      "fog_identifier": "newb:dm_desert"
+    },
+    "mesa": {
+      "fog_identifier": "newb:dm_mesa"
+    },
+    "mesa_bryce": {
+      "fog_identifier": "newb:dm_mesa"
+    },
+    "mesa_plateau": {
+      "fog_identifier": "newb:dm_mesa"
+    },
+    "mesa_plateau_mutated": {
+      "fog_identifier": "newb:dm_mesa"
+    },
+    "mesa_plateau_stone": {
+      "fog_identifier": "newb:dm_mesa"
+    },
+    "mesa_plateau_stone_mutated": {
+      "fog_identifier": "newb:dm_mesa"
+    },
+    "savanna": {
+      "fog_identifier": "newb:dm_savanna"
+    },
+    "savanna_mutated": {
+      "fog_identifier": "newb:dm_savanna"
+    },
+    "savanna_plateau": {
+      "fog_identifier": "newb:dm_savanna"
+    },
+    "savanna_plateau_mutated": {
+      "fog_identifier": "newb:dm_savanna"
+    },
+    "extreme_hills": {
+      "fog_identifier": "newb:dm_mountains"
+    },
+    "extreme_hills_edge": {
+      "fog_identifier": "newb:dm_mountains"
+    },
+    "extreme_hills_mutated": {
+      "fog_identifier": "newb:dm_mountains"
+    },
+    "extreme_hills_plus_trees": {
+      "fog_identifier": "newb:dm_mountains"
+    },
+    "extreme_hills_plus_trees_mutated": {
+      "fog_identifier": "newb:dm_mountains"
+    },
+    "stony_peaks": {
+      "fog_identifier": "newb:dm_mountains"
+    },
+    "stone_beach": {
+      "fog_identifier": "newb:dm_mountains"
+    },
+    "ocean": {
+      "fog_identifier": "newb:dm_ocean"
+    },
+    "deep_ocean": {
+      "fog_identifier": "newb:dm_ocean"
+    },
+    "cold_ocean": {
+      "fog_identifier": "newb:dm_cold_ocean"
+    },
+    "deep_cold_ocean": {
+      "fog_identifier": "newb:dm_cold_ocean"
+    },
+    "lukewarm_ocean": {
+      "fog_identifier": "newb:dm_warm_ocean"
+    },
+    "deep_lukewarm_ocean": {
+      "fog_identifier": "newb:dm_warm_ocean"
+    },
+    "warm_ocean": {
+      "fog_identifier": "newb:dm_warm_ocean"
+    },
+    "deep_warm_ocean": {
+      "fog_identifier": "newb:dm_warm_ocean"
+    },
+    "frozen_ocean": {
+      "fog_identifier": "newb:dm_frozen_ocean"
+    },
+    "deep_frozen_ocean": {
+      "fog_identifier": "newb:dm_frozen_ocean"
+    },
+    "legacy_frozen_ocean": {
+      "fog_identifier": "newb:dm_frozen_ocean"
+    },
+    "river": {
+      "fog_identifier": "newb:dm_river"
+    },
+    "beach": {
+      "fog_identifier": "newb:dm_beach"
+    },
+    "mushroom_island": {
+      "fog_identifier": "newb:dm_mushroom"
+    },
+    "mushroom_island_shore": {
+      "fog_identifier": "newb:dm_mushroom"
+    },
+    "pale_garden": {
+      "fog_identifier": "newb:dm_pale_garden"
+    },
+    "deep_dark": {
+      "fog_identifier": "newb:dm_deep_dark"
+    },
+    "dripstone_caves": {
+      "fog_identifier": "newb:dm_dripstone"
+    },
+    "lush_caves": {
+      "fog_identifier": "newb:dm_lush_caves"
     }
   }
 }

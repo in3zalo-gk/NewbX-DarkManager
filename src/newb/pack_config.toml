@@ -3,9 +3,11 @@ version = [0, 1, 0]
 min_supported_mc_version = [1, 26, 50]
 description = '''
 §c%w
-§7- Dark fantasy shader: deep fog, cold nights, warm torchlight.
+§7Dark Fantasy: fog forte por bioma, noites frias, chuva com poças, luz do sol entre as folhas e aurora a cada 3 dias.
+§7Precisa de Minecraft 1.26.50+ com MB Loader (Android) ou MaterialBinLoader/Patched Minecraft. Não funciona sem loader.
+§7Na engrenagem escolha o modo: Completo ou Low (mais FPS).
 %v
-§3Based on Newb Shader by devendrn
+§3Base: Newb Shader (devendrn)
 ''' # %w = patch warning, %v = version
 authors = ["Marcos", "devendrn"]
 url = "https://github.com/devendrn/newb-x-mcbe"
@@ -31,56 +33,56 @@ Original shader: devendrn and Newb Shader contributors (MIT) - https://github.co
 define = "REALISTIC_CLOUDS"
 materials = ["Clouds", "RenderChunk"]
 description = '''
-Realistic clouds
+Nuvens Realistas - nuvens 3D volumétricas (mais pesado)
 '''
 
 [[subpack]]
 define = "ROUNDED_CLOUDS"
 materials = ["Clouds"]
 description = '''
-Rounded Clouds
+Nuvens Arredondadas - nuvens 3D macias (custo médio)
 '''
 
 [[subpack]]
 define = "BOX_CLOUDS"
 materials = ["Clouds", "RenderChunk"]
 description = '''
-Box Clouds
+Nuvens em Caixa - nuvens de blocos estilo vanilla
 '''
 
 [[subpack]]
 define = "CHUNK_ANIM"
 materials = ["RenderChunk"]
 description = '''
-Chunk loading animation
+Animação de Chunks - os blocos sobem ao carregar
 '''
 
 [[subpack]]
 define = "NO_WAVE_NO_FOG"
 materials = ["RenderChunk"]
 description = '''
-No fog and wave effects
+Sem Fog e Sem Ondas - remove névoa e movimento de plantas/água (leve)
 '''
 
 [[subpack]]
 define = "NO_FOG"
 materials = ["RenderChunk"]
 description = '''
-No fog effect
+Sem Fog - remove a névoa do terreno
 '''
 
 [[subpack]]
 define = "NO_WAVE"
 materials = ["RenderChunk"]
 description = '''
-No wave effects
+Sem Ondas - plantas, folhas, lanternas e água paradas
 '''
 
 [[subpack]]
 define = "DARK_LOW"
 materials = ["Actor", "ActorGlint", "ActorMultiTexture", "Clouds", "EndSky", "ItemInHandColor", "ItemInHandColorGlint", "ItemInHandTextured", "RenderChunk", "Sky", "Stars", "SunMoon", "Weather"]
 description = '''
-Dark Fantasy — Low
+Dark Fantasy — Low - sem bloom, raios, luz nas folhas, ondas, aurora e brilho de chuva; mantém fog, céu, Nether e End (mais FPS)
 '''
 
 #[[subpack]]
@@ -94,5 +96,5 @@ Dark Fantasy — Low
 define = "DEFAULT"
 materials = []
 description = '''
-Default
+Dark Fantasy — Completo - fog por bioma, chuva com poças, luz nas folhas, aurora e bloom leve (recomendado)
 '''

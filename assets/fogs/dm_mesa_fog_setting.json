@@ -1,0 +1,28 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "newb:dm_mesa"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.48,
+        "fog_end": 1.0,
+        "fog_color": "#c99c72",
+        "render_distance_type": "render"
+      },
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 18.0,
+        "fog_color": "#2a6472",
+        "render_distance_type": "fixed"
+      },
+      "weather": {
+        "fog_start": 0.23,
+        "fog_end": 0.7,
+        "fog_color": "#6b7480",
+        "render_distance_type": "render"
+      }
+    }
+  }
+}

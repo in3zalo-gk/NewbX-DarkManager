@@ -144,6 +144,15 @@ vec4 renderClouds(vec2 p, float t, float rain, vec3 horizonCol, vec3 zenithCol, 
 
 // aurora is rendered on clouds layer
 #ifdef NL_AURORA
+// 1.0 on aurora days, 0.0 otherwise. 'day' = world day counter (Day uniform)
+float nlAuroraDay(float day) {
+  #ifdef NL_AURORA_EVERY_DAYS
+    return step(mod(floor(day + 0.5) + NL_AURORA_DAY_OFFSET, NL_AURORA_EVERY_DAYS), 0.5);
+  #else
+    return 1.0;
+  #endif
+}
+
 vec4 renderAurora(vec3 p, float t, float rain, float dayFactor) {
   t *= NL_AURORA_VELOCITY;
   p.xz *= NL_AURORA_SCALE;

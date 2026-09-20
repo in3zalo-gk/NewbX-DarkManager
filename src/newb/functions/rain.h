@@ -60,11 +60,16 @@ vec4 nlRefl(
 
         wetRefl.a = calculateFresnel(cosR, 0.03)*reflective;
         wetRefl.a *= clamp(2.0-2.0*camDist/endDist, 0.0, 1.0); // fade out before clip
+
+        #ifdef NL_RAIN_SHIMMER
+          // each block flickers out of phase, like drops hitting the puddle
+          wetRefl.a *= 1.0 - NL_RAIN_SHIMMER + NL_RAIN_SHIMMER*noise1D(t*1.5 + 40.0*fastRand(tiledCpos.xz));
+        #endif
       }
     }
 
     // darken wet parts
-    color.rgb *= 1.0 - 0.4*wetness*env.rainFactor;
+    color.rgb *= 1.0 - NL_WET_DARKEN*wetness*env.rainFactor;
 
   #ifndef NL_GROUND_REFL
   }

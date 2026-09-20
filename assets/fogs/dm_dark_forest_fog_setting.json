@@ -1,0 +1,28 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "newb:dm_dark_forest"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.24,
+        "fog_end": 1.0,
+        "fog_color": "#56705f",
+        "render_distance_type": "render"
+      },
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 14.0,
+        "fog_color": "#1c4a48",
+        "render_distance_type": "fixed"
+      },
+      "weather": {
+        "fog_start": 0.23,
+        "fog_end": 0.7,
+        "fog_color": "#6b7480",
+        "render_distance_type": "render"
+      }
+    }
+  }
+}
