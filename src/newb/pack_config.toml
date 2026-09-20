@@ -1,0 +1,98 @@
+name = "Newb X Dark Manager"
+version = [0, 1, 0]
+min_supported_mc_version = [1, 26, 50]
+description = '''
+§c%w
+§7- Dark fantasy shader: deep fog, cold nights, warm torchlight.
+%v
+§3Based on Newb Shader by devendrn
+''' # %w = patch warning, %v = version
+authors = ["Marcos", "devendrn"]
+url = "https://github.com/devendrn/newb-x-mcbe"
+uuid = "a67d8c81-80c0-445a-9b53-470458fb8d27" # Use https://www.uuidgenerator.net/version4
+materials = ["Actor", "ActorGlint", "ActorMultiTexture", "Clouds", "EndSky", "ItemInHandColor", "ItemInHandColorGlint", "ItemInHandTextured", "RenderChunk","Sky", "Stars", "SunMoon", "Weather"]
+
+[info] 
+copyright = '''
+Copyright © 2026 %a, and "Newb Shader" Contributors
+
+Newb X Dark Manager is a variant built from the source code of Newb X Legacy / Newb Shader (https://github.com/devendrn/newb-x-mcbe), which is licensed under the MIT License. This pack was compiled from that source. The original MIT license and copyright notice of Newb Shader apply to the shader source.
+
+Official compiled "Newb Shader" packs by devendrn are licensed separately (CC BY-ND 4.0) and are not redistributed here.
+''' # %a = authors
+credits = '''
+Newb X Dark Manager is a variant of Newb X Legacy / Newb Shader.
+Original shader: devendrn and Newb Shader contributors (MIT) - https://github.com/devendrn/newb-x-mcbe
+'''
+
+# subpacks are arranged in left to right order
+# right-most subpack is enabled by default
+[[subpack]]
+define = "REALISTIC_CLOUDS"
+materials = ["Clouds", "RenderChunk"]
+description = '''
+Realistic clouds
+'''
+
+[[subpack]]
+define = "ROUNDED_CLOUDS"
+materials = ["Clouds"]
+description = '''
+Rounded Clouds
+'''
+
+[[subpack]]
+define = "BOX_CLOUDS"
+materials = ["Clouds", "RenderChunk"]
+description = '''
+Box Clouds
+'''
+
+[[subpack]]
+define = "CHUNK_ANIM"
+materials = ["RenderChunk"]
+description = '''
+Chunk loading animation
+'''
+
+[[subpack]]
+define = "NO_WAVE_NO_FOG"
+materials = ["RenderChunk"]
+description = '''
+No fog and wave effects
+'''
+
+[[subpack]]
+define = "NO_FOG"
+materials = ["RenderChunk"]
+description = '''
+No fog effect
+'''
+
+[[subpack]]
+define = "NO_WAVE"
+materials = ["RenderChunk"]
+description = '''
+No wave effects
+'''
+
+[[subpack]]
+define = "DARK_LOW"
+materials = ["Actor", "ActorGlint", "ActorMultiTexture", "Clouds", "EndSky", "ItemInHandColor", "ItemInHandColorGlint", "ItemInHandTextured", "RenderChunk", "Sky", "Stars", "SunMoon", "Weather"]
+description = '''
+Dark Fantasy — Low
+'''
+
+#[[subpack]]
+#define = "LITE"
+#materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
+#description = '''
+#Many effects disabled. A bit lighter!
+#'''
+
+[[subpack]]
+define = "DEFAULT"
+materials = []
+description = '''
+Default
+'''

@@ -1,0 +1,83 @@
+name: build
+
+# Compila o Newb X Dark Manager na nuvem (shaderc + lazurite) e publica o .mcpack.
+# Rode em: Actions > build > Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      subversion:
+        description: 'Sub-versao (ex: 1)'
+        required: false
+        default: '1'
+        type: string
+      platform:
+        description: 'Plataforma alvo'
+        required: false
+        default: 'Android'
+        type: choice
+        options:
+        - Android
+        - Multi-platform
+        - All
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    if: ${{ (github.event.inputs.platform || 'Android') == 'Android' || github.event.inputs.platform == 'All' }}
+    steps:
+    - uses: actions/checkout@v7
+    - uses: actions/setup-python@v7
+      with:
+        python-version: '3.14'
+        cache: 'pip'
+    - uses: actions/cache@v6
+      with:
+        key: env-files-linux-laz-1.26.51
+        path: |
+          ${{ github.workspace }}/tool/data
+    - run: pip install -r requirements.txt
+    - name: Static checks (includes, macros, subpack defines)
+      run: python tools/check_static.py
+    - name: Build (default + subpacks, including Dark Fantasy - Low)
+      run: |
+        ./build.sh setup
+        ./build.sh pack -p android -v ${{ github.event.inputs.subversion || '1' }}
+    - name: Validate pack (material.bin count, manifest, mcpack structure)
+      run: python tools/validate_pack.py --profile android
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Newb-X-Dark-Manager-android
+        path: dist/*.mcpack
+    - uses: actions/upload-artifact@v4
+      with:
+        name: pack-folder-android
+        path: build/pack-android
+
+  multiplatform:
+    runs-on: windows-2022
+    if: ${{ github.event.inputs.platform == 'Multi-platform' || github.event.inputs.platform == 'All' }}
+    steps:
+    - uses: actions/checkout@v7
+    - uses: actions/setup-python@v7
+      with:
+        python-version: '3.14'
+        cache: 'pip'
+    - uses: actions/cache@v6
+      with:
+        key: env-files-win-laz-1.26.51
+        path: |
+          ${{ github.workspace }}/tool/data
+    - run: pip install -r requirements.txt
+    - run: |
+        .\build.bat setup
+        .\build.bat pack -p multiplatform -v ${{ github.event.inputs.subversion || '1' }}
+    - run: python tools/validate_pack.py --profile multiplatform
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Newb-X-Dark-Manager-multiplatform
+        path: dist/*.mcpack
+    - uses: actions/upload-artifact@v4
+      with:
+        name: pack-folder-multiplatform
+        path: build/pack-multiplatform
