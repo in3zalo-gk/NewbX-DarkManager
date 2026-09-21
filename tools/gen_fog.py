@@ -21,33 +21,58 @@ FOG_DIR = os.path.join(ROOT, "assets", "fogs")
 BIOMES_JSON = os.path.join(ROOT, "assets", "biomes_client.json")
 
 # name: (air_start, air_color, water_end_blocks, water_color, [biome ids])
+# air_start LOWER = denser fog (safe range ~0.18-0.55, avoid 0.10-0.15 Nether)
+# air_color tints sky/fog via NL_BIOME_TINT (must NOT have red==blue or End detection breaks)
 GROUPS = {
-  "plains":      (0.52, "#9fb4c8", 18, "#1f4d80", ["plains", "sunflower_plains"]),
-  "meadow":      (0.50, "#b3bfcc", 18, "#2a5a86", ["meadow", "cherry_grove"]),
-  "forest":      (0.38, "#7f9a8a", 16, "#1f5a5c", ["forest", "forest_hills", "flower_forest", "birch_forest", "birch_forest_hills", "birch_forest_mutated", "birch_forest_hills_mutated"]),
-  "dark_forest": (0.24, "#56705f", 14, "#1c4a48", ["roofed_forest", "roofed_forest_mutated"]),
-  "swamp":       (0.20, "#5f7a52",  9, "#3a5d3a", ["swampland", "swampland_mutated"]),
-  "mangrove":    (0.22, "#62805a", 10, "#3a6040", ["mangrove_swamp"]),
-  "jungle":      (0.30, "#5f9a85", 14, "#1d6a66", ["jungle", "jungle_hills", "jungle_mutated", "jungle_edge", "jungle_edge_mutated", "bamboo_jungle", "bamboo_jungle_hills"]),
-  "taiga":       (0.36, "#8fa5b8", 16, "#1f4f7a", ["taiga", "taiga_hills", "taiga_mutated", "mega_taiga", "mega_taiga_hills", "redwood_taiga_mutated", "redwood_taiga_hills_mutated"]),
-  "cold_taiga":  (0.32, "#a8bccc", 16, "#2a5578", ["cold_taiga", "cold_taiga_hills", "cold_taiga_mutated"]),
-  "snow":        (0.32, "#c8d8e8", 14, "#2f5f8f", ["ice_plains", "ice_plains_spikes", "ice_mountains", "frozen_river", "cold_beach"]),
-  "snow_peaks":  (0.28, "#b9cbe0", 14, "#2f5f8f", ["snowy_slopes", "grove", "frozen_peaks", "jagged_peaks"]),
-  "desert":      (0.46, "#d2b98a", 18, "#2a6a78", ["desert", "desert_hills", "desert_mutated"]),
-  "mesa":        (0.48, "#c99c72", 18, "#2a6472", ["mesa", "mesa_bryce", "mesa_plateau", "mesa_plateau_mutated", "mesa_plateau_stone", "mesa_plateau_stone_mutated"]),
-  "savanna":     (0.50, "#cbb27a", 18, "#2a6474", ["savanna", "savanna_mutated", "savanna_plateau", "savanna_plateau_mutated"]),
-  "mountains":   (0.40, "#8494a8", 16, "#1f4f78", ["extreme_hills", "extreme_hills_edge", "extreme_hills_mutated", "extreme_hills_plus_trees", "extreme_hills_plus_trees_mutated", "stony_peaks", "stone_beach"]),
-  "ocean":       (0.44, "#6f9cc4", 20, "#1f4d80", ["ocean", "deep_ocean"]),
-  "cold_ocean":  (0.42, "#7fa0bf", 18, "#234d7a", ["cold_ocean", "deep_cold_ocean"]),
-  "warm_ocean":  (0.46, "#7fc0c8", 20, "#1f7a86", ["lukewarm_ocean", "deep_lukewarm_ocean", "warm_ocean", "deep_warm_ocean"]),
-  "frozen_ocean":(0.36, "#b4ccdc", 14, "#2a5a88", ["frozen_ocean", "deep_frozen_ocean", "legacy_frozen_ocean"]),
-  "river":       (0.45, "#86a9c2", 16, "#1f5580", ["river"]),
-  "beach":       (0.50, "#b8c4cc", 18, "#2a6a88", ["beach"]),
-  "mushroom":    (0.34, "#a893b0", 16, "#4a3a78", ["mushroom_island", "mushroom_island_shore"]),
-  "pale_garden": (0.22, "#9a9fa3", 12, "#3a4a55", ["pale_garden"]),
-  "deep_dark":   (0.20, "#1c2a2e", 10, "#10303a", ["deep_dark"]),
-  "dripstone":   (0.38, "#7a6f66", 14, "#1f4a6a", ["dripstone_caves"]),
-  "lush_caves":  (0.34, "#4f7a5c", 14, "#1d6a5a", ["lush_caves"]),
+  # Default / open: gray-green strong fog
+  "plains":      (0.28, "#8a9a88", 14, "#1f4d80", ["plains", "sunflower_plains"]),
+  # Meadow soft cool gray
+  "meadow":      (0.30, "#a8b0b8", 14, "#2a5a86", ["meadow"]),
+  # Sakura / Cherry: pink + gray (very atmospheric)
+  "sakura":      (0.22, "#d4a0b8", 12, "#5a3a70", ["cherry_grove"]),
+  # Forest: deep green-gray
+  "forest":      (0.22, "#5a7a68", 12, "#1f5a5c", ["forest", "forest_hills", "flower_forest", "birch_forest", "birch_forest_hills", "birch_forest_mutated", "birch_forest_hills_mutated"]),
+  # Dark forest: almost black-green, very dense
+  "dark_forest": (0.18, "#3a4a40", 10, "#1c4a48", ["roofed_forest", "roofed_forest_mutated"]),
+  # Swamp: murky olive-green, thick
+  "swamp":       (0.18, "#4a6a42",  8, "#3a5d3a", ["swampland", "swampland_mutated"]),
+  # Mangrove: dark green-brown
+  "mangrove":    (0.18, "#4a6048",  9, "#3a6040", ["mangrove_swamp"]),
+  # Jungle: humid teal-green, dense
+  "jungle":      (0.20, "#3a8a72", 12, "#1d6a66", ["jungle", "jungle_hills", "jungle_mutated", "jungle_edge", "jungle_edge_mutated", "bamboo_jungle", "bamboo_jungle_hills"]),
+  # Taiga: cool blue-gray
+  "taiga":       (0.24, "#7a90a0", 14, "#1f4f7a", ["taiga", "taiga_hills", "taiga_mutated", "mega_taiga", "mega_taiga_hills", "redwood_taiga_mutated", "redwood_taiga_hills_mutated"]),
+  # Cold taiga: colder blue-gray
+  "cold_taiga":  (0.22, "#90a8b8", 14, "#2a5578", ["cold_taiga", "cold_taiga_hills", "cold_taiga_mutated"]),
+  # Snow: pale icy blue-white, strong
+  "snow":        (0.22, "#c0d4e8", 12, "#2f5f8f", ["ice_plains", "ice_plains_spikes", "ice_mountains", "frozen_river", "cold_beach"]),
+  # Snow peaks: colder, denser
+  "snow_peaks":  (0.20, "#a8c0d8", 12, "#2f5f8f", ["snowy_slopes", "grove", "frozen_peaks", "jagged_peaks"]),
+  # Desert: warm dusty beige-orange, still dense
+  "desert":      (0.30, "#c8a878", 16, "#2a6a78", ["desert", "desert_hills", "desert_mutated"]),
+  # Mesa / Badlands: rusty orange-brown
+  "mesa":        (0.28, "#b88860", 16, "#2a6472", ["mesa", "mesa_bryce", "mesa_plateau", "mesa_plateau_mutated", "mesa_plateau_stone", "mesa_plateau_stone_mutated"]),
+  # Savanna: dry yellow-brown
+  "savanna":     (0.30, "#c0a070", 16, "#2a6474", ["savanna", "savanna_mutated", "savanna_plateau", "savanna_plateau_mutated"]),
+  # Mountains: cool blue-gray
+  "mountains":   (0.24, "#7088a0", 14, "#1f4f78", ["extreme_hills", "extreme_hills_edge", "extreme_hills_mutated", "extreme_hills_plus_trees", "extreme_hills_plus_trees_mutated", "stony_peaks", "stone_beach"]),
+  # Ocean: deep blue
+  "ocean":       (0.26, "#5a88b0", 18, "#1f4d80", ["ocean", "deep_ocean"]),
+  "cold_ocean":  (0.24, "#6a90b0", 16, "#234d7a", ["cold_ocean", "deep_cold_ocean"]),
+  "warm_ocean":  (0.28, "#60b0b8", 18, "#1f7a86", ["lukewarm_ocean", "deep_lukewarm_ocean", "warm_ocean", "deep_warm_ocean"]),
+  "frozen_ocean":(0.22, "#a0c0d8", 12, "#2a5a88", ["frozen_ocean", "deep_frozen_ocean", "legacy_frozen_ocean"]),
+  # River / Beach
+  "river":       (0.26, "#7098b0", 14, "#1f5580", ["river"]),
+  "beach":       (0.30, "#a8b8c0", 16, "#2a6a88", ["beach"]),
+  # Mushroom: purple-gray mystical
+  "mushroom":    (0.20, "#9078a0", 12, "#4a3a78", ["mushroom_island", "mushroom_island_shore"]),
+  # Pale Garden: pale ash gray, very dense
+  "pale_garden": (0.18, "#8a9098", 10, "#3a4a55", ["pale_garden"]),
+  # Deep Dark: near black, extremely dense
+  "deep_dark":   (0.18, "#1a2428",  8, "#10303a", ["deep_dark"]),
+  # Caves
+  "dripstone":   (0.22, "#6a6058", 12, "#1f4a6a", ["dripstone_caves"]),
+  "lush_caves":  (0.20, "#3a6a50", 12, "#1d6a5a", ["lush_caves"]),
 }
 WEATHER_COLOR = "#6b7480"
 

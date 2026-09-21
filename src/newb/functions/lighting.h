@@ -224,7 +224,11 @@ vec3 nlEntityLighting(nl_skycolor skycol, nl_environment env, vec3 pos, vec4 nor
   }
 
   lum = luminance(light);
-  light += torchColor*(smoothstep(0.1, 0.0, tileLightCol.b-tileLightCol.r)*NL_TORCHLIGHT_INTENSITY*tl/(1.0+lum));
+  // Prefer lightmap tint when present (helps redstone/soul/etc colored sources) then fall back to torchColor
+  vec3 lmTint = tileLightCol.rgb;
+  float lmHue = length(lmTint - vec3_splat(dot(lmTint, vec3_splat(0.333))));
+  vec3 finalTorch = mix(torchColor, normalize(lmTint + 0.001) * length(torchColor), smoothstep(0.02, 0.12, lmHue) * 0.75);
+  light += finalTorch * (smoothstep(0.1, 0.0, tileLightCol.b - tileLightCol.r) * NL_TORCHLIGHT_INTENSITY * tl / (1.0 + lum));
 
   // game min brightness
   lum = luminance(light);

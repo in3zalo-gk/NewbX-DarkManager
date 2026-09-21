@@ -4,7 +4,7 @@ min_supported_mc_version = [1, 26, 50]
 description = '''
 §c%w
 §7Dark Fantasy: fog forte por bioma, noites frias, chuva com poças, luz do sol entre as folhas e aurora a cada 3 dias.
-§7Precisa de Minecraft 1.26.50+ com MB Loader (Android) ou MaterialBinLoader/Patched Minecraft. Não funciona sem loader.
+§cNecessário MBLoader ou Minecraft Patched. Não funciona sem loader.
 §7Na engrenagem escolha o modo: Completo ou Low (mais FPS).
 %v
 §3Base: Newb Shader (devendrn)
@@ -33,56 +33,80 @@ Original shader: devendrn and Newb Shader contributors (MIT) - https://github.co
 define = "REALISTIC_CLOUDS"
 materials = ["Clouds", "RenderChunk"]
 description = '''
-Nuvens Realistas - nuvens 3D volumétricas (mais pesado)
+§lNuvens Realistas / Realistic Clouds
+§r§7PT: Ativa nuvens 3D volumétricas realistas com profundidade e volume. Mais pesado no FPS, ideal para dispositivos intermediários/altos que querem céu cinematográfico.
+§7EN: Enables realistic volumetric 3D clouds with depth and volume. Heavier on FPS, ideal for mid/high devices wanting a cinematic sky.
+§cNecessário MBLoader ou Minecraft Patched.
 '''
 
 [[subpack]]
 define = "ROUNDED_CLOUDS"
 materials = ["Clouds"]
 description = '''
-Nuvens Arredondadas - nuvens 3D macias (custo médio)
+§lNuvens Arredondadas / Rounded Clouds
+§r§7PT: Nuvens 3D macias e arredondadas, visual suave com custo médio de desempenho. Bom equilíbrio entre beleza e FPS.
+§7EN: Soft rounded 3D clouds, smooth look with medium performance cost. Good balance between beauty and FPS.
+§cNecessário MBLoader ou Minecraft Patched.
 '''
 
 [[subpack]]
 define = "BOX_CLOUDS"
 materials = ["Clouds", "RenderChunk"]
 description = '''
-Nuvens em Caixa - nuvens de blocos estilo vanilla
+§lNuvens em Caixa / Box Clouds
+§r§7PT: Nuvens de blocos estilo vanilla clássico. Leve, fiel ao Minecraft original, ótimo para maximizar FPS.
+§7EN: Classic vanilla-style block clouds. Lightweight, true to original Minecraft, great for maximizing FPS.
+§cNecessário MBLoader ou Minecraft Patched.
 '''
 
 [[subpack]]
 define = "CHUNK_ANIM"
 materials = ["RenderChunk"]
 description = '''
-Animação de Chunks - os blocos sobem ao carregar
+§lAnimação de Chunks / Chunk Animation
+§r§7PT: Os blocos sobem e se formam suavemente ao carregar o terreno. Efeito visual de “mundo nascendo”, leve no desempenho.
+§7EN: Blocks rise and form smoothly when terrain loads. “World birth” visual effect, light on performance.
+§cNecessário MBLoader ou Minecraft Patched.
 '''
 
 [[subpack]]
 define = "NO_WAVE_NO_FOG"
 materials = ["RenderChunk"]
 description = '''
-Sem Fog e Sem Ondas - remove névoa e movimento de plantas/água (leve)
+§lSem Fog e Sem Ondas / No Fog & No Waves
+§r§7PT: Remove completamente a névoa do terreno e todas as animações de plantas, folhas, lanternas e água. Máximo FPS, visual mais “seco”.
+§7EN: Completely removes terrain fog and all plant/leaf/lantern/water animations. Maximum FPS, drier look.
+§cNecessário MBLoader ou Minecraft Patched.
 '''
 
 [[subpack]]
 define = "NO_FOG"
 materials = ["RenderChunk"]
 description = '''
-Sem Fog - remove a névoa do terreno
+§lSem Fog / No Fog
+§r§7PT: Remove apenas a névoa do terreno (mantém ondas e animações). Útil se a fog estiver atrapalhando a visão ou o FPS.
+§7EN: Removes only terrain fog (keeps waves and animations). Useful if fog is hurting visibility or FPS.
+§cNecessário MBLoader ou Minecraft Patched.
 '''
 
 [[subpack]]
 define = "NO_WAVE"
 materials = ["RenderChunk"]
 description = '''
-Sem Ondas - plantas, folhas, lanternas e água paradas
+§lSem Ondas / No Waves
+§r§7PT: Plantas, folhas, lanternas e água ficam completamente paradas. Mantém fog e restante dos efeitos. Bom para quem prefere visual estático.
+§7EN: Plants, leaves, lanterns and water stay completely still. Keeps fog and other effects. Good for those who prefer a static look.
+§cNecessário MBLoader ou Minecraft Patched.
 '''
 
 [[subpack]]
 define = "DARK_LOW"
 materials = ["Actor", "ActorGlint", "ActorMultiTexture", "Clouds", "EndSky", "ItemInHandColor", "ItemInHandColorGlint", "ItemInHandTextured", "RenderChunk", "Sky", "Stars", "SunMoon", "Weather"]
 description = '''
-Dark Fantasy — Low - sem bloom, raios, luz nas folhas, ondas, aurora e brilho de chuva; mantém fog, céu, Nether e End (mais FPS)
+§lDark Fantasy — Low
+§r§7PT: Modo leve. Desativa bloom, raios de sol, luz entre folhas, ondas, aurora e brilho de chuva. Mantém fog por bioma, céu, Nether, End e iluminação principal. Ideal para dispositivos de entrada (ex: Moto G24) e mais FPS.
+§7EN: Light mode. Disables bloom, sun rays, leaf light, waves, aurora and rain shimmer. Keeps biome fog, sky, Nether, End and main lighting. Ideal for entry-level devices (e.g. Moto G24) and higher FPS.
+§cNecessário MBLoader ou Minecraft Patched.
 '''
 
 #[[subpack]]
@@ -96,5 +120,8 @@ Dark Fantasy — Low - sem bloom, raios, luz nas folhas, ondas, aurora e brilho 
 define = "DEFAULT"
 materials = []
 description = '''
-Dark Fantasy — Completo - fog por bioma, chuva com poças, luz nas folhas, aurora e bloom leve (recomendado)
+§lDark Fantasy — Completo / Full (recomendado)
+§r§7PT: Tudo ligado: fog forte personalizado por bioma, noites frias, chuva com poças reflexivas, luz do sol filtrando entre as folhas, aurora a cada 3 dias e bloom leve. Experiência completa Dark Fantasy.
+§7EN: Everything on: strong biome-customized fog, cold nights, rain with reflective puddles, sunlight filtering through leaves, aurora every 3 days and light bloom. Full Dark Fantasy experience.
+§cNecessário MBLoader ou Minecraft Patched.
 '''

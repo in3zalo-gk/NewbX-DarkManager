@@ -2,19 +2,19 @@
   "format_version": "1.16.100",
   "minecraft:fog_settings": {
     "description": {
-      "identifier": "newb:dm_snow_peaks"
+      "identifier": "newb:dm_sakura"
     },
     "distance": {
       "air": {
-        "fog_start": 0.2,
+        "fog_start": 0.22,
         "fog_end": 1.0,
-        "fog_color": "#a8c0d8",
+        "fog_color": "#d4a0b8",
         "render_distance_type": "render"
       },
       "water": {
         "fog_start": 0.0,
         "fog_end": 12.0,
-        "fog_color": "#2f5f8f",
+        "fog_color": "#5a3a70",
         "render_distance_type": "fixed"
       },
       "weather": {
