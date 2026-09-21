@@ -38,17 +38,17 @@
     UNDERWATER_FOG -> NL_UNDERWATER_FOG  COLOR_SATURATION -> NL_SATURATION
     CONTRAST -> NL_CONTRAST              BLOOM_STRENGTH -> NL_BLOOM_STRENGTH
 */
-#define NL_FOG_DENSITY    1.9  // 0.3 thin ~ 2.0 very dense - matched to reference screenshots
-#define NL_FOG_DISTANCE   0.45 // closer = denser, matched to thick fog references
-#define NL_NIGHT_DARKNESS 0.55 // 0.0 vanilla-like night ~ 0.9 very dark night (keep < 0.9 to stay playable)
+#define NL_FOG_DENSITY    2.0  // 0.3 thin ~ 2.0 very dense - matched to reference screenshots
+#define NL_FOG_DISTANCE   0.32 // closer = denser, matched to thick fog references
+#define NL_NIGHT_DARKNESS 0.78 // 0.0 vanilla-like night ~ 0.9 very dark night (keep < 0.9 to stay playable)
 #define NL_MOON_INTENSITY 1.0  // 0.3 dim ~ 2.0 bright (cold moonlight strength)
-#define NL_AMBIENT_LIGHT  0.85 // 0.4 dark shadows ~ 1.5 bright shadows (overworld sky ambient)
-#define NL_NETHER_FOG     1.5  // 0.5 thin ~ 3.0 very dense
-#define NL_END_FOG        1.3  // 0.5 thin ~ 3.0 very dense
-#define NL_NETHER_FOG_BRIGHTNESS 0.8 // 0.4 very dark ~ 1.2 bright (nether fog color, keeps vanilla per-biome hue)
-#define NL_END_FOG_START  0.28 // 0.05 fog starts very close ~ 0.9 far (End only, fraction of render distance)
-#define NL_UNDERWATER_FOG 1.1  // 0.5 clear water ~ 2.0 murky water
-#define NL_CONTRAST       1.12 // 1.0 vanilla ~ 1.4 harsh contrast
+#define NL_AMBIENT_LIGHT  0.60 // 0.4 dark shadows ~ 1.5 bright shadows (overworld sky ambient)
+#define NL_NETHER_FOG     2.2  // 0.5 thin ~ 3.0 very dense
+#define NL_END_FOG        2.0  // 0.5 thin ~ 3.0 very dense
+#define NL_NETHER_FOG_BRIGHTNESS 0.55 // 0.4 very dark ~ 1.2 bright (nether fog color, keeps vanilla per-biome hue)
+#define NL_END_FOG_START  0.18 // 0.05 fog starts very close ~ 0.9 far (End only, fraction of render distance)
+#define NL_UNDERWATER_FOG 1.5  // 0.5 clear water ~ 2.0 murky water
+#define NL_CONTRAST       1.22 // 1.0 vanilla ~ 1.4 harsh contrast
 #define NL_BIOME_TINT     0.9  // [toggle] 0.0 off ~ 1.0 strong. Tints sky/fog by the biome fog color (fogs/ + biomes_client.json) - strong tint
 #define NL_LEAF_LIGHT     0.9  // [toggle] 0.3 subtle ~ 1.0 strong. Dappled sunlight through tree leaves (moves with sun + wind)
 #define NL_BLOOM_STRENGTH 0.10 // [toggle] 0.05 subtle ~ 0.4. NOT real bloom: cheap highlight bleed (no post-process pass exists in materials)
@@ -64,7 +64,7 @@
 
 /* Lighting */
 #define NL_SUNLIGHT_INTENSITY   3.0  // 1.0 weak ~ 5.0 bright
-#define NL_TORCHLIGHT_INTENSITY 1.2  // 0.5 weak ~ 3.0 bright
+#define NL_TORCHLIGHT_INTENSITY 1.35  // 0.5 weak ~ 3.0 bright
 #define NL_SHADOW_INTENSITY     0.95  // 0.0 no shadow ~ 1.0 strong shadow (High Windows inspired)
 #define NL_MIN_LIGHTING_BOOST   1.1  // 1.0 minimal lighting boost for dark areas ~ 3.0 brighter dark areas
 #define NL_BLINKING_TORCH    // [toggle] flickering light
@@ -87,7 +87,7 @@
 
 /* Fog */
 #define NL_FOG 1.0                // [toggle] 0.1 subtle ~ 1.0 blend with sky completely
-#define NL_MIST_DENSITY 0.65      // stronger atmospheric mist
+#define NL_MIST_DENSITY 0.85      // stronger atmospheric mist, very murky
 #define NL_RAIN_MIST_OPACITY 0.22 // [toggle] 0.04 very subtle ~ 0.5 thick rain mist blow
 #define NL_CLOUDY_FOG 0.22        // [toggle] 0.0 subtle - 0.8 dense fog clouds
 
