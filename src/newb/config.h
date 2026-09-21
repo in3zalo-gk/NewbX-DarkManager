@@ -38,8 +38,8 @@
     UNDERWATER_FOG -> NL_UNDERWATER_FOG  COLOR_SATURATION -> NL_SATURATION
     CONTRAST -> NL_CONTRAST              BLOOM_STRENGTH -> NL_BLOOM_STRENGTH
 */
-#define NL_FOG_DENSITY    1.75  // 0.3 thin ~ 2.0 very dense (overworld fog strength) - very strong
-#define NL_FOG_DISTANCE   0.55 // 0.3 fog starts very close ~ 1.0 vanilla distance (overworld). Biomes add their own distance on top - closer = denser
+#define NL_FOG_DENSITY    1.9  // 0.3 thin ~ 2.0 very dense - matched to reference screenshots
+#define NL_FOG_DISTANCE   0.45 // closer = denser, matched to thick fog references
 #define NL_NIGHT_DARKNESS 0.55 // 0.0 vanilla-like night ~ 0.9 very dark night (keep < 0.9 to stay playable)
 #define NL_MOON_INTENSITY 1.0  // 0.3 dim ~ 2.0 bright (cold moonlight strength)
 #define NL_AMBIENT_LIGHT  0.85 // 0.4 dark shadows ~ 1.5 bright shadows (overworld sky ambient)
@@ -87,7 +87,7 @@
 
 /* Fog */
 #define NL_FOG 1.0                // [toggle] 0.1 subtle ~ 1.0 blend with sky completely
-#define NL_MIST_DENSITY 0.55      // 0.0 no mist ~ 1.0 misty - stronger mist
+#define NL_MIST_DENSITY 0.65      // stronger atmospheric mist
 #define NL_RAIN_MIST_OPACITY 0.22 // [toggle] 0.04 very subtle ~ 0.5 thick rain mist blow
 #define NL_CLOUDY_FOG 0.22        // [toggle] 0.0 subtle - 0.8 dense fog clouds
 
