@@ -80,6 +80,19 @@ WEATHER_COLOR = "#6b7480"
 def rgb(h):
     h = h.lstrip("#"); return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
 
+# Reference screenshots are hazy/washed out, not colorful. Pull every biome fog color
+# toward grey before writing it out. 0.0 = untouched, 1.0 = fully grey.
+AIR_DESATURATE = 0.45
+WATER_DESATURATE = 0.30
+
+def desaturate(hexcol, amount):
+    r, g, b = rgb(hexcol)
+    grey = 0.299*r + 0.587*g + 0.114*b
+    r2 = round(r + (grey - r)*amount)
+    g2 = round(g + (grey - g)*amount)
+    b2 = round(b + (grey - b)*amount)
+    return "#%02x%02x%02x" % (r2, g2, b2)
+
 def check(name, start, air, wend, water):
     r, g, b = rgb(air)
     if r == b: sys.exit(f"{name}: air color red==blue would be detected as End")
@@ -96,6 +109,8 @@ for f in os.listdir(FOG_DIR):
 biomes = json.load(open(BIOMES_JSON, encoding="utf-8"))["biomes"]
 seen = {}
 for name, (start, air, wend, water, ids) in GROUPS.items():
+    air = desaturate(air, AIR_DESATURATE)
+    water = desaturate(water, WATER_DESATURATE)
     check(name, start, air, wend, water)
     ident = f"newb:dm_{name}"
     data = {

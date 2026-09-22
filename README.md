@@ -55,6 +55,10 @@ próprias, escritas em GLSL e compiladas com `lazurite` + `shaderc`. **Não é u
 - **Aurora a cada 3 dias** (`NL_AURORA_EVERY_DAYS`): aparece na noite de um dia a cada 3 (o jogo fornece o contador de dias).
 - **Bloom leve** (`NL_BLOOM_STRENGTH`): é um realce barato de altas luzes, não um bloom de verdade.
 - **Água leve:** sem SSR, sem passes extras; tom mais frio e fog subaquática própria.
+- **Cores lavadas/hazy** (`NL_SATURATION` mais baixo, tinta clara/escura mais suave, cores de fog por bioma puxadas ~45% pro
+  cinza em `tools/gen_fog.py`): visual acinzentado como nas referências, não colorido.
+- **Reflexos** (`NL_GROUND_REFL`, `NL_WATER_REFL_MASK`): chão molhado reflete o céu o tempo todo, mais forte com sol baixo;
+  na chuva as poças refletem mais e cintilam (`NL_RAIN_SHIMMER`).
 
 ## Configuração (`src/newb/config.h`, bloco "main tuning knobs")
 

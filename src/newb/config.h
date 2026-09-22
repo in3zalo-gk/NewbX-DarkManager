@@ -49,7 +49,7 @@
 #define NL_END_FOG_START  0.18 // 0.05 fog starts very close ~ 0.9 far (End only, fraction of render distance)
 #define NL_UNDERWATER_FOG 1.5  // 0.5 clear water ~ 2.0 murky water
 #define NL_CONTRAST       1.22 // 1.0 vanilla ~ 1.4 harsh contrast
-#define NL_BIOME_TINT     0.9  // [toggle] 0.0 off ~ 1.0 strong. Tints sky/fog by the biome fog color (fogs/ + biomes_client.json) - strong tint
+#define NL_BIOME_TINT     0.4  // [toggle] 0.0 off ~ 1.0 strong. Tints sky/fog by the biome fog color (fogs/ + biomes_client.json) - kept mild so fog reads hazy/grey, not colorful
 #define NL_LEAF_LIGHT     0.9  // [toggle] 0.3 subtle ~ 1.0 strong. Dappled sunlight through tree leaves (moves with sun + wind)
 #define NL_BLOOM_STRENGTH 0.10 // [toggle] 0.05 subtle ~ 0.4. NOT real bloom: cheap highlight bleed (no post-process pass exists in materials)
 
@@ -57,10 +57,10 @@
 #define NL_TONEMAP_TYPE 3              // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
 #define NL_GAMMA 1.30                  // 0.3 low ~ 2.0 high
 //#define NL_EXPOSURE 1.3              // [toggle] 0.5 dark ~ 3.0 bright
-#define NL_SATURATION 0.86             // [toggle] 0.0 grayscale ~ 4.0 super saturated
+#define NL_SATURATION 0.55             // [toggle] 0.0 grayscale ~ 4.0 super saturated - washed out, hazy look
 #define NL_TINT                        // [toggle] enable light/dark tone tinting
-#define NL_TINT_LOW  vec3(0.84,0.95,1.18) // color tint for dark tone (cold shadows)
-#define NL_TINT_HIGH vec3(1.10,1.0,0.88) // color tint for light tone (warm highlights)
+#define NL_TINT_LOW  vec3(0.90,0.97,1.10) // color tint for dark tone (cold shadows) - softer, less saturated
+#define NL_TINT_HIGH vec3(1.06,1.0,0.93) // color tint for light tone (warm highlights) - softer, less saturated
 
 /* Lighting */
 #define NL_SUNLIGHT_INTENSITY   3.0  // 1.0 weak ~ 5.0 bright
@@ -137,15 +137,15 @@
 #define NL_WATER_WAVE_SPEED  0.8  // 0.2 calm ~ 2.0 turbulent
 #define NL_WATER_TEX_OPACITY 0.3  // 0.0 plain water ~ 1.0 vanilla water texture
 #define NL_WATER_WAVE             // [toggle] wave effect
-//#define NL_WATER_REFL_MASK      // [toggle] fake water reflection mask
-#define NL_WATER_TINT vec3(0.45,0.78,0.6)
+#define NL_WATER_REFL_MASK      // [toggle] fake water reflection mask
+#define NL_WATER_TINT vec3(0.52,0.68,0.60) // desaturated murky green-grey (swamp reference)
 
 /* Underwater */
 #define NL_UNDERWATER_BRIGHTNESS 0.65        // 0.0 dark ~ 3.0 bright
 #define NL_CAUSTIC_INTENSITY 1.9             // 0.5 weak ~ 5.0 bright
 #define NL_UNDERWATER_WAVE 0.1               // [toggle] 0.02 subtle ~ 0.6 trippy
 #define NL_UNDERWATER_STREAKS 1.0            // [toggle] 0.8 subtle - 2.0 bright streaks from top
-#define NL_UNDERWATER_TINT vec3(0.75,0.92,1.0) // fog tint color when underwater
+#define NL_UNDERWATER_TINT vec3(0.80,0.90,0.95) // fog tint color when underwater - less saturated
 
 /* Cloud type */
 #define NL_CLOUD_TYPE 1 // 0:vanilla, 1:soft, 2:rounded, 3:realistic
@@ -227,10 +227,10 @@
 //#define NL_GODRAY 0.3 // [toggle] 0.1 subtle ~ 0.8 strong
 
 /* Sky reflection */
-//#define NL_GROUND_REFL 0.4       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky
+#define NL_GROUND_REFL 0.38       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky. Always on (not just rain); rain adds puddle reflections on top
 #define NL_GROUND_RAIN_WETNESS 1.0 // 0.0 no wetness ~ 1.0 fully wet blocks when raining
 #define NL_WET_DARKEN 0.5          // 0.0 none ~ 0.8 very dark wet blocks while raining
-#define NL_RAIN_SHIMMER 0.3        // [toggle] 0.1 subtle ~ 0.6 puddle reflections flicker as rain hits them
+#define NL_RAIN_SHIMMER 0.45       // [toggle] 0.1 subtle ~ 0.6 puddle reflections flicker as rain hits them
 #define NL_GROUND_RAIN_PUDDLES 0.85 // 0.0 no puddles ~ 1.0 puddles
 
 /* Entity (Actor, ItemInHand) */
@@ -297,6 +297,8 @@
   #undef NL_RAIN_MIST_OPACITY
   #undef NL_LEAF_LIGHT
   #undef NL_RAIN_SHIMMER
+  #undef NL_GROUND_REFL
+  #undef NL_WATER_REFL_MASK
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 1
   // animations / secondary

@@ -8,13 +8,13 @@
       "air": {
         "fog_start": 0.18,
         "fog_end": 1.0,
-        "fog_color": "#12181c",
+        "fog_color": "#14171a",
         "render_distance_type": "render"
       },
       "water": {
         "fog_start": 0.0,
         "fog_end": 6.0,
-        "fog_color": "#10303a",
+        "fog_color": "#172d34",
         "render_distance_type": "fixed"
       },
       "weather": {
